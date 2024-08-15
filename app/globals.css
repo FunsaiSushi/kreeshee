@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link {
+  @apply px-4 py-2 text-quaternary font-medium whitespace-nowrap rounded-full transition-colors duration-300;
+}
+
+.nav-link:hover {
+  @apply bg-quaternary text-primary;
+}
+
+.sign-up-button {
+  @apply flex justify-center items-center space-x-2 text-lg lg:text-xl text-primary font-semibold border-4 border-primary hover:bg-primary hover:text-quaternary rounded-full w-full lg:px-32 py-2 text-nowrap transition-colors duration-300;
+}
