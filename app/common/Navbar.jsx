@@ -21,7 +21,7 @@ export default function Navbar() {
     <nav
       className={`top-0 h-16 ${
         isOpen
-          ? "absolute min-h-screen flex-col justify-center backdrop-blur-lg bg-opacity-75"
+          ? "absolute min-h-screen flex-col justify-center backdrop-blur-xl bg-opacity-75"
           : "sticky justify-between"
       } top-0 z-40 flex w-full items-center p-4 bg-primary `}
     >
@@ -41,7 +41,7 @@ export default function Navbar() {
       <div
         className={`flex ${
           isOpen ? "flex-col space-y-3 text-xl" : ""
-        } justify-end lg:justify-between items-center w-full`}
+        } justify-end xl:justify-between items-center w-full`}
       >
         {/* left links */}
         <div
@@ -49,7 +49,7 @@ export default function Navbar() {
             isOpen
               ? "flex flex-col justify-center items-center space-y-3"
               : "hidden"
-          } lg:flex lg:space-x-2`}
+          } xl:flex xl:space-x-2`}
         >
           <Link href="/farmers" className="nav-link">
             For Farmers
@@ -77,7 +77,7 @@ export default function Navbar() {
               isOpen
                 ? "flex flex-col justify-center items-center space-y-3"
                 : "hidden"
-            } lg:flex lg:space-x-2`}
+            } xl:flex xl:space-x-2`}
           >
             <button className="nav-link flex justify-center items-center space-x-2">
               <IoSettings />

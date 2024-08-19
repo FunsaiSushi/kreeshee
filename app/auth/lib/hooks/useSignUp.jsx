@@ -59,10 +59,7 @@ const useSignUp = () => {
         firebaseUid: user.uid,
       });
 
-      setCurrentUser({
-        ...user,
-        displayName: name,
-      });
+      setCurrentUser(user);
 
       // Redirect to the homepage
       router.push("/");

@@ -1,3 +1,11 @@
+"use client";
+
+import SupplyPostForm from "./components/SupplyPostForm";
+
 export default function page() {
-  return <div>Sell</div>;
+  return (
+    <div>
+      <SupplyPostForm />
+    </div>
+  );
 }
