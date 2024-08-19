@@ -1,98 +1,70 @@
 "use client";
 
 import { useState } from "react";
+import SignUpForm from "../components/SignUpForm";
 import {
-  sendSignInLinkToEmail,
-  fetchSignInMethodsForEmail,
-} from "firebase/auth";
-import { auth } from "../../lib/firebase"; // Using the auth instance from your firebase.js
+  auth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "../../lib/config/firebase";
+import { generateTempPassword } from "../lib/utils/generateTempPassword";
+import Link from "next/link";
 
-const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
+const page = () => {
+  const [showVerificationMessage, setShowVerificationMessage] = useState(false);
 
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
+  const handleEmailUnique = async (uniqueEmail) => {
+    try {
+      const randomPassword = generateTempPassword();
+      localStorage.setItem("tempPassword", randomPassword);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    if (validateEmail(e.target.value)) {
-      setError("");
-      setValidEmail(true);
-    } else {
-      setValidEmail(false);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        uniqueEmail,
+        randomPassword
+      );
+      const user = userCredential.user;
+      await sendEmailVerification(user, {
+        url: `${window.location.origin}/auth/signup/create-account`,
+      });
+      setShowVerificationMessage(true);
+    } catch (error) {
+      console.error("Error sending verification email:", error);
     }
   };
 
-  const handleBlur = () => {
-    if (!validEmail) {
-      setError("Please enter a valid email. (e.g. john@example.com )");
-    }
-  };
-
-  const handleContinue = async () => {
-    if (validEmail) {
-      try {
-        const signInMethods = await fetchSignInMethodsForEmail(auth, email);
-        if (signInMethods.length > 0) {
-          setError("Email already exists. Please login instead.");
-        } else {
-          // Send Verification Email
-          const actionCodeSettings = {
-            url: "http://localhost:3000/verifyEmail", // This is the link user will click after verification
-            handleCodeInApp: true,
-          };
-          await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-          window.localStorage.setItem("emailForSignIn", email);
-          setError("Verification email sent! Please check your email.");
-          setIsVerified(true);
-        }
-      } catch (error) {
-        setError(error.message);
-      }
-    }
+  const handleUnverifiedEmail = () => {
+    setShowVerificationMessage(true);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+    <div className="absolute top-0 flex justify-center items-center min-h-screen w-full">
+      <div className="flex flex-col max-w-sm lg:max-w-xl space-y-2 bg-quaternary p-5 rounded-3xl">
+        {showVerificationMessage ? (
+          <div className="text-center text-black text-xl">
+            A verification email has been sent to your email, please verify to
+            continue.
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center ">
+            <SignUpForm
+              onEmailUnique={handleEmailUnique}
+              onUnverifiedEmail={handleUnverifiedEmail}
+            />
 
-        <div className="mb-4">
-          <input
-            type="email"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            placeholder="Enter your email"
-            value={email}
-            onChange={handleEmailChange}
-            onBlur={handleBlur}
-            required
-          />
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-        </div>
+            <div className="font-semibold pt-10">Already have an account?</div>
 
-        <button
-          onClick={handleContinue}
-          disabled={!validEmail}
-          className={`w-full px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md transition ${
-            validEmail ? "hover:bg-indigo-700" : "opacity-50 cursor-not-allowed"
-          }`}
-        >
-          Continue
-        </button>
-
-        {isVerified && (
-          <p className="text-green-500 text-center mt-4">
-            Please verify your email!
-          </p>
+            <Link
+              href="/auth/login"
+              className="w-full flex justify-center items-center py-2 rounded-full text-lg text-primary font-bold border-2 border-primary hover:bg-primary hover:text-quaternary transition duration-300 ease-in-out"
+            >
+              Login
+            </Link>
+          </div>
         )}
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default page;

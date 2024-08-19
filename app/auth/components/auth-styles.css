@@ -1,0 +1,64 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: black;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #d6efd8;
+  -webkit-box-shadow: 0 0 0 50px #d6efd8 inset;
+}
+
+.auth-provider-btn {
+  @apply flex justify-center items-center space-x-2 text-lg lg:text-xl text-white font-normal bg-primary hover:bg-secondary rounded-full w-full px-8 py-2 lg:px-32 text-nowrap transition-colors duration-300;
+}
+
+.user-input input {
+  @apply w-full py-2 bg-transparent outline-none rounded-full text-base text-black px-5 transition ease-in-out duration-300;
+}
+
+.user-input label {
+  @apply absolute top-1/2 left-5 transform -translate-y-1/2 text-base pointer-events-none transition-all ease-in-out duration-300;
+}
+
+.user-input input.focused ~ label,
+.user-input input:valid ~ label,
+.user-input input ~ label.has-content {
+  @apply top-0 text-sm bg-quaternary px-2 font-normal;
+}
+/* 
+.name-input input {
+  @apply w-full py-2 bg-transparent outline-none rounded-full text-base text-black px-5 transition ease-in-out duration-300;
+}
+
+.name-input label {
+  @apply absolute top-1/2 left-5 transform -translate-y-1/2 text-base pointer-events-none transition-all ease-in-out duration-300;
+}
+
+.name-input input.focused ~ label,
+.name-input input:valid ~ label,
+.name-input input ~ label.has-content {
+  @apply top-0 text-sm bg-quaternary px-2 font-semibold;
+}
+
+.password-input input {
+  @apply w-full py-2 bg-transparent outline-none rounded-full text-base text-black px-5 transition ease-in-out duration-300;
+}
+
+.password-input label {
+  @apply absolute top-1/2 left-5 transform -translate-y-1/2 text-base pointer-events-none transition-all ease-in-out duration-300;
+}
+
+.password-input input.focused ~ label,
+.password-input input:valid ~ label,
+.password-input input ~ label.has-content {
+  @apply top-0 text-sm bg-quaternary px-2 font-semibold;
+} */
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

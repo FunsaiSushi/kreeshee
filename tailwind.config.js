@@ -12,6 +12,7 @@ module.exports = {
         secondary: "#508D4E",
         tertiary: "#80AF81",
         quaternary: "#D6EFD8",
+        brightLime: "#B1FF05",
       },
     },
   },

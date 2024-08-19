@@ -1,15 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-
 import { MdSell } from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
 
 import Offers from "./ui/Offers";
 import Demands from "./ui/Demands";
+import { useAuthContext } from "./auth/lib/contexts/AuthContext"; // Import AuthContext
 
 const page = () => {
+  const { currentUser } = useAuthContext(); // Get the current user from AuthContext
+
   return (
-    <main className="flex flex-col items-center pt-16 min-h-screen">
+    <main className="flex flex-col items-center min-h-screen">
       <div className="flex flex-col md:flex-row items-center justify-between w-full mb-4 bg-primary rounded-b-3xl">
         <div className="md:w-1/2 p-4 text-quaternary">
           <h1
@@ -52,12 +56,18 @@ const page = () => {
       </div>
 
       <div className="flex justify-center space-x-4 w-full max-w-5xl px-4 my-2">
-        <Link href="/auth/signup" className="sign-up-button">
+        <Link
+          href={currentUser ? "/sell" : "/auth/signup"}
+          className="sign-up-button"
+        >
           <MdSell />
           <div className="lg:hidden">Sell</div>{" "}
           <div className="hidden lg:block">Sell at kreeshee</div>
         </Link>
-        <Link href="/auth/signup" className="sign-up-button">
+        <Link
+          href={currentUser ? "/buy" : "/auth/signup"}
+          className="sign-up-button"
+        >
           <FaShoppingBag />
           <div className="lg:hidden">Buy</div>
           <div className="hidden lg:block">Buy at kreeshee</div>

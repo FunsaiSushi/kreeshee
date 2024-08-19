@@ -1,7 +1,16 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import LoginForm from "../components/LoginForm";
+
 export default function page() {
+  const router = useRouter();
+
+  const handleLoginSuccess = () => {};
+
   return (
     <div>
-      <h2 className="text-xl font-bold">Welcome back!</h2>
+      <LoginForm onLoginSuccess={handleLoginSuccess} />
     </div>
   );
 }
