@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { IoSettings, IoMail } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
-import { useAuthContext } from "../auth/lib/contexts/AuthContext"; // Import the context
+import { useAuthContext } from "../auth/contexts/AuthContext"; // Import the context
 
 import SearchBox from "./SearchBox";
 import HamburgerMenu from "./HamburgerMenu";
@@ -103,7 +103,7 @@ export default function Navbar() {
                 }}
               >
                 <MdAccountCircle />
-                <div>Profile</div>
+                <div>{currentUser.displayName}</div>
               </Link>
             ) : (
               <Link

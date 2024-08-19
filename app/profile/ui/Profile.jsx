@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { FaPen } from "react-icons/fa";
 
 import useGetUserData from "../hooks/useGetUserData";
-import useLogout from "../../auth/lib/hooks/useLogout";
+import useLogout from "../../auth/hooks/useLogout";
 
 export default function Profile() {
   const router = useRouter();
@@ -25,7 +25,9 @@ export default function Profile() {
     return <div className="flex">Error: {userError}</div>;
   }
 
-  const handleProfilePicEdit = () => {};
+  const handleProfilePicEdit = () => {
+    console.log("shion ekta bolod");
+  };
 
   return (
     <div className="container mx-auto max-w-7xl p-4 min-h-screen">

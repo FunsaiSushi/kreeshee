@@ -1,15 +1,12 @@
-"use client";
-
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { sendPasswordResetEmail } from "firebase/auth";
-import axios from "axios";
 
-import useSignUp from "../lib/hooks/useSignUp";
-import useLogin from "../lib/hooks/useLogin";
-import { useAuthContext } from "../lib/contexts/AuthContext";
-import { isValidEmail } from "../lib/utils/emailValidation";
+import useSignUp from "../hooks/useSignUp";
+import useLogin from "../hooks/useLogin";
+import { useAuthContext } from "../contexts/AuthContext";
+import { isValidEmail } from "../utils/emailValidation";
 import { auth } from "../../lib/config/firebase";
 
 import "./auth-styles.css";
@@ -29,7 +26,6 @@ const LoginForm = ({ onLoginSuccess }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordInputFocused, setPasswordInputFocused] = useState(false);
   const [resetPassword, setResetPassword] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
 
   const [inputFocused, setInputFocused] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -68,16 +64,18 @@ const LoginForm = ({ onLoginSuccess }) => {
   const handlePasswordInputFocus = () => {
     setPasswordInputFocused(true);
   };
+
   const handlePasswordInputBlur = () => {
     setPasswordInputFocused(false);
   };
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-    // setPasswordValid(isValidPassword(newPassword));
   };
 
   const handleSubmit = async (e) => {
@@ -89,6 +87,11 @@ const LoginForm = ({ onLoginSuccess }) => {
         return;
       }
       setSubmitLoading(true);
+
+      if (resetPassword) {
+        await handlePasswordReset();
+        return;
+      }
 
       // Check mongodb if email exists
       const { isUnique } = await checkEmailUniqueness(email);
@@ -107,9 +110,7 @@ const LoginForm = ({ onLoginSuccess }) => {
     }
   };
 
-  const handlePasswordReset = async (e) => {
-    e.preventDefault();
-    setError(null);
+  const handlePasswordReset = async () => {
     try {
       await sendPasswordResetEmail(auth, email);
       setError("Password reset email sent. Please check your inbox.");
@@ -117,36 +118,6 @@ const LoginForm = ({ onLoginSuccess }) => {
       setError("Error sending password reset email. Please try again.");
     }
   };
-
-  // const handleNewPasswordSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setError(null);
-  //   try {
-  //     const user = auth.currentUser;
-
-  //     if (!user) {
-  //       throw new Error("User is not authenticated");
-  //     }
-
-  //     const token = await user.getIdToken();
-
-  //     await axios.post(
-  //       "/api/user/update-password",
-  //       { email, newPassword },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     setError(
-  //       "Password updated successfully. Please login with your new password."
-  //     );
-  //   } catch (error) {
-  //     setError("Error updating password. Please try again.");
-  //   }
-  // };
 
   return (
     <main className="absolute top-0 flex justify-center items-center w-full min-h-screen">
@@ -157,7 +128,7 @@ const LoginForm = ({ onLoginSuccess }) => {
 
         <form
           className="flex flex-col justify-center items-center w-full space-y-6"
-          onSubmit={resetPassword ? handlePasswordReset : handleSubmit}
+          onSubmit={handleSubmit}
         >
           <div className="flex flex-col space-y-2 w-full relative py-6">
             <div className={`user-input w-full relative`}>
@@ -178,7 +149,6 @@ const LoginForm = ({ onLoginSuccess }) => {
                     : "border-red-500"
                 }`}
               />
-
               <label
                 className={`${
                   email && !inputFocused
@@ -243,6 +213,7 @@ const LoginForm = ({ onLoginSuccess }) => {
               </div>
               {!resetPassword && (
                 <button
+                  type="button"
                   className="text-primary text-sm font-semibold hover:text-secondary transition duration-300 flex justify-end"
                   onClick={() => {
                     setResetPassword(true);
@@ -285,6 +256,7 @@ const LoginForm = ({ onLoginSuccess }) => {
 
         {resetPassword && (
           <button
+            type="button"
             className="text-primary hover:text-quaternary hover:bg-primary font-bold border-2 border-primary rounded-full w-full py-2 transition-colors duration-300"
             onClick={() => setResetPassword(false)}
           >

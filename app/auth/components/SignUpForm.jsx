@@ -10,9 +10,9 @@ import {
   EmailAuthProvider,
   reauthenticateWithCredential,
 } from "../../lib/config/firebase";
-import { isValidEmail } from "../lib/utils/emailValidation";
-import useSignUp from "../lib/hooks/useSignUp";
-import { useAuthContext } from "../lib/contexts/AuthContext";
+import { isValidEmail } from "../utils/emailValidation";
+import useSignUp from "../hooks/useSignUp";
+import { useAuthContext } from "../contexts/AuthContext";
 import "./auth-styles.css";
 
 const SignUpForm = ({ onEmailUnique, onUnverifiedEmail }) => {

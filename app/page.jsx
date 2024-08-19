@@ -5,9 +5,9 @@ import Image from "next/image";
 import { MdSell } from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
 
-import Offers from "./ui/Offers";
+import Supplies from "./ui/Supplies";
 import Demands from "./ui/Demands";
-import { useAuthContext } from "./auth/lib/contexts/AuthContext"; // Import AuthContext
+import { useAuthContext } from "./auth/contexts/AuthContext"; // Import AuthContext
 
 const page = () => {
   const { currentUser } = useAuthContext(); // Get the current user from AuthContext
@@ -75,7 +75,7 @@ const page = () => {
       </div>
 
       <div className="w-full p-4 space-y-6 flex flex-col justify-center items-center">
-        <Offers />
+        <Supplies />
         <Demands />
       </div>
     </main>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useAuthContext } from "@/app/auth/lib/contexts/AuthContext";
+import { useAuthContext } from "@/app/auth/contexts/AuthContext";
 
 const useGetUserData = () => {
   const [userData, setUserData] = useState(null);

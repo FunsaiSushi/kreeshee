@@ -3,7 +3,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { useAuthContext } from "../../auth/lib/contexts/AuthContext";
+import { useAuthContext } from "../../auth/contexts/AuthContext";
 
 export default function SupplyPostForm() {
   const { currentUser } = useAuthContext();

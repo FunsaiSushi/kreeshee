@@ -7,7 +7,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "../../lib/config/firebase";
-import { generateTempPassword } from "../lib/utils/generateTempPassword";
+import { generateTempPassword } from "../utils/generateTempPassword";
 import Link from "next/link";
 
 const page = () => {

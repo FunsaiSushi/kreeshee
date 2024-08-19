@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../lib/config/firebase";
+import { auth } from "../../lib/config/firebase";
 import { useAuthContext } from "../contexts/AuthContext";
 
 const useLogin = () => {
   const [loading, setLoading] = useState(false);
-  const { setCurrentUser } = useAuthContext();
+  const { setCurrentUser, setToken } = useAuthContext();
   const router = useRouter();
 
   const login = async (email, password) => {
@@ -20,6 +20,11 @@ const useLogin = () => {
         password
       );
       const user = userCredential.user;
+
+      const token = await user.getIdToken();
+      setToken(token);
+
+      console.log(token);
 
       setCurrentUser(user);
       router.push("/");

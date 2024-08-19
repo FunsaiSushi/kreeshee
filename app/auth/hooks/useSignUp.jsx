@@ -2,11 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import {
-  auth,
-  updatePassword,
-  updateProfile,
-} from "../../../lib/config/firebase";
+import { auth, updatePassword, updateProfile } from "../../lib/config/firebase";
 // import { generateTempPassword } from "../utils/generateTempPassword";
 import axios from "axios";
 import { useAuthContext } from "../contexts/AuthContext";

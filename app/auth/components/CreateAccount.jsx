@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 import "./auth-styles.css";
-import useSignUp from "../lib/hooks/useSignUp";
+import useSignUp from "../hooks/useSignUp";
 // import { isValidPassword } from "../utils/passwordValidation";
 
 export default function CreateAccount() {
