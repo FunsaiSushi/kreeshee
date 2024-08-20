@@ -11,7 +11,7 @@ import { auth } from "../../lib/config/firebase";
 
 import "./auth-styles.css";
 
-const LoginForm = ({ onLoginSuccess }) => {
+const LoginForm = () => {
   const inputRef = useRef(null);
   const router = useRouter();
   const { checkEmailUniqueness } = useSignUp();
@@ -99,7 +99,7 @@ const LoginForm = ({ onLoginSuccess }) => {
       if (!isUnique) {
         setSubmitLoading(false);
         await login(email, password);
-        onLoginSuccess();
+        router.push("/");
         return;
       } else {
         setSubmitLoading(false);

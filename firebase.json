@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "kreeshee",
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
