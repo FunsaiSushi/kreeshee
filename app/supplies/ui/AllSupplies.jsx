@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { useAuthContext } from "../../auth/contexts/AuthContext"; // Adjust this path
-import SupplyPost from "./SupplyPost";
+
+import SupplyPostCard from "./SupplyPostCard";
 
 const AllSupplies = () => {
-  const { token } = useAuthContext(); // Get the token from AuthContext
   const [supplies, setSupplies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -86,7 +85,7 @@ const AllSupplies = () => {
       <h1 className="text-2xl font-bold mb-4">All Supplies</h1>
       <div>
         {supplies.map((supply) => (
-          <SupplyPost key={supply._id} supply={supply} />
+          <SupplyPostCard key={supply._id} supply={supply} />
         ))}
       </div>
       {loading && <p>Loading more supplies...</p>}

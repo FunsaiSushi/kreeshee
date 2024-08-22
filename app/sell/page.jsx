@@ -1,6 +1,6 @@
 "use client";
 
-import SupplyPostForm from "./components/SupplyPostForm";
+import SupplyPostForm from "./ui/SupplyPostForm";
 
 export default function page() {
   return (

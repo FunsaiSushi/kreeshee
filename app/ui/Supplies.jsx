@@ -7,7 +7,7 @@ function Supplies() {
       {/* subheader */}
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <h2 className="text-xl font-bold text-primary">Latest Supplies</h2>
+          <h2 className="text-lg font-bold text-primary">Latest Supplies</h2>
           <div className="border-2 text rounded-full border-primary py-1 px-4 text-primary font-semibold">
             Sort
           </div>

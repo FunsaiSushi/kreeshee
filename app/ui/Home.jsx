@@ -14,8 +14,14 @@ const Home = () => {
 
   return (
     <main className="flex flex-col items-center min-h-screen">
+      {/* <div
+        className="absolute z-20 font-bold text-nowrap"
+        style={{ fontSize: "clamp(2rem, 7vw, 10rem)" }}
+      >
+        FROM FARM TO HOME
+      </div> */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full mb-4 bg-primary rounded-b-3xl">
-        <div className="md:w-1/2 p-4 text-quaternary">
+        <div className="flex flex-col justify-start md:w-1/2 p-4 text-quaternary">
           <h1
             className="lg:text-6xl font-bold mb-4 text-nowrap"
             style={{ fontSize: "2rem" }}

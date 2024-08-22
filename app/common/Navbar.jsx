@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { IoSettings, IoMail } from "react-icons/io5";
+import { IoMail } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
+import { GrLanguage } from "react-icons/gr";
 import { useAuthContext } from "../auth/contexts/AuthContext"; // Import the context
 
 import SearchBox from "./SearchBox";
@@ -51,16 +52,37 @@ export default function Navbar() {
               : "hidden"
           } xl:flex xl:space-x-2`}
         >
-          <Link href="/farmers" className="nav-link">
+          <Link
+            href="/farmers"
+            className="nav-link"
+            onClick={() => {
+              if (isOpen) {
+                toggleMenu();
+              }
+            }}
+          >
             For Farmers
           </Link>
-          <Link href="/retailers" className="nav-link">
+          <Link
+            href="/retailers"
+            className="nav-link"
+            onClick={() => {
+              if (isOpen) {
+                toggleMenu();
+              }
+            }}
+          >
             For Retailers
           </Link>
-          <Link href="/services" className="nav-link">
-            Services
-          </Link>
-          <Link href="/about" className="nav-link">
+          <Link
+            href="/about-kreeshee"
+            className="nav-link"
+            onClick={() => {
+              if (isOpen) {
+                toggleMenu();
+              }
+            }}
+          >
             About Us
           </Link>
         </div>
@@ -80,12 +102,17 @@ export default function Navbar() {
             } xl:flex xl:space-x-2`}
           >
             <button className="nav-link flex justify-center items-center space-x-2">
-              <IoSettings />
-              <div>Settings</div>
+              <GrLanguage />
+              <div>English</div>
             </button>
             <Link
               href="/contact"
               className="nav-link flex justify-center items-center space-x-2"
+              onClick={() => {
+                if (isOpen) {
+                  toggleMenu();
+                }
+              }}
             >
               <IoMail />
               <div>Contact</div>
