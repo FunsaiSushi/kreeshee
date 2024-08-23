@@ -17,7 +17,7 @@ const AllSupplies = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `${API_URL}/post/supplies?page=${page}&limit=10`,
+        `${API_URL}/post/supplies?page=${page}&limit=12`,
         {
           headers: {
             "Content-Type": "application/json",

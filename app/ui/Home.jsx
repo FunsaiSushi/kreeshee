@@ -8,6 +8,7 @@ import { FaShoppingBag } from "react-icons/fa";
 import Supplies from "./Supplies";
 import Demands from "./Demands";
 import { useAuthContext } from "../auth/contexts/AuthContext"; // Import AuthContext
+import Services from "./services/Services";
 
 const Home = () => {
   const { currentUser } = useAuthContext(); // Get the current user from AuthContext
@@ -55,8 +56,8 @@ const Home = () => {
           <div className="relative w-1/3 h-72">
             <Image src="/store.jpg" alt="Store" fill className="object-cover" />
           </div>
-          <div className="absolute bottom-0 left-0 text-xl text-quaternary font-bold z-10 bg-black bg-opacity-80 p-4 flex justify-center w-full">
-            From farmer to your doorstep.
+          <div className="absolute bottom-0 left-0 text-2xl text-quaternary z-10 bg-black bg-opacity-80 p-3 flex justify-center w-full">
+            FROM FARM TO HOME.
           </div>
         </div>
       </div>
@@ -83,6 +84,9 @@ const Home = () => {
       <div className="w-full p-4 space-y-6 flex flex-col justify-center items-center">
         <Supplies />
         <Demands />
+        <div>
+          <Services />
+        </div>
       </div>
     </main>
   );

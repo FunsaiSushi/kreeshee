@@ -11,7 +11,7 @@ export default function BuyingOptions({ formData, handleInputChange }) {
   return (
     <div className="mb-4 w-full">
       <label htmlFor="buyingOptions" className="block font-semibold mb-2">
-        Buying Options <span className="text-red-500">*</span>:
+        Buying Options
       </label>
       <div className="flex justify-between space-x-2 w-full">
         {/* Retail Option */}

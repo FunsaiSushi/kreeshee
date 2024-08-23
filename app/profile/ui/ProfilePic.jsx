@@ -6,9 +6,11 @@ import { FaPen } from "react-icons/fa";
 import axios from "axios";
 import { auth, updateProfile } from "@/app/lib/config/firebase";
 import { useRouter } from "next/navigation";
+import { useAuthContext } from "@/app/auth/contexts/AuthContext";
 
 export default function ProfilePic({ userData }) {
   const router = useRouter();
+  const { token, refreshToken } = useAuthContext();
   const [isUploading, setIsUploading] = useState(false);
   const [preview, setPreview] = useState(
     userData?.profilePic || "/default-user-image.svg"
@@ -44,12 +46,15 @@ export default function ProfilePic({ userData }) {
       formData.append("userId", userData._id);
 
       try {
+        if (!token) {
+          await refreshToken();
+        }
         const response = await axios.post(
           `${API_URL}/user/upload-profile-pic`,
           formData,
           {
             headers: {
-              Authorization: `Bearer ${auth.currentUser?.accessToken}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -63,8 +68,8 @@ export default function ProfilePic({ userData }) {
               photoURL: updatedUser.profilePicUrl,
             });
           }
-
-          router.refresh(); // Refresh the page or fetch the updated user data
+          alert("Profile picture uploaded successfully!");
+          router.refresh();
         } else {
           console.error("Failed to upload profile picture");
         }

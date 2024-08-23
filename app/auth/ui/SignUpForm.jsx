@@ -19,7 +19,7 @@ const SignUpForm = ({ onEmailUnique, onUnverifiedEmail }) => {
   const { checkEmailUniqueness, checkUserInFirebase } = useSignUp();
   const router = useRouter();
   const inputRef = useRef(null);
-  const { currentUser } = useAuthContext();
+  const { currentUser, signInWithGoogle } = useAuthContext();
   const [email, setEmail] = useState("");
   const [emailValid, setEmailValid] = useState(true);
   const [emailUnique, setEmailUnique] = useState(true);
@@ -111,9 +111,13 @@ const SignUpForm = ({ onEmailUnique, onUnverifiedEmail }) => {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    await signInWithGoogle();
+  };
+
   return (
     <div className="flex flex-col justify-center items-center space-y-2 w-full">
-      <button className="auth-provider-btn">
+      <button onClick={handleGoogleSignIn} className="auth-provider-btn">
         <FaGoogle size={24} />
         <div className="text-center text-lg">Continue with Google</div>
       </button>

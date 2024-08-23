@@ -1,30 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { IoMail } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { useAuthContext } from "../auth/contexts/AuthContext"; // Import the context
-
 import SearchBox from "./SearchBox";
 import HamburgerMenu from "./HamburgerMenu";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useAuthContext(); // Get the current user
+  const router = useRouter(); // Use the router hook to get the current route
+  const pathname = usePathname(); // Get the current pathname
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Function to handle scrolling to the Services section
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById("services-section");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth" });
+      if (isOpen) {
+        toggleMenu();
+      }
+    }
   };
 
   return (
     <nav
       className={`top-0 h-16 ${
         isOpen
-          ? "absolute min-h-screen flex-col justify-center backdrop-blur-xl bg-opacity-75"
+          ? "fixed min-h-screen flex-col justify-center backdrop-blur-xl bg-opacity-75 bg-primary"
           : "sticky justify-between"
-      } top-0 z-40 flex w-full items-center p-4 bg-primary `}
+      } z-40 flex w-full items-center p-4 bg-primary `}
+      style={isOpen ? { top: 0 } : {}}
     >
       {/* logo */}
       <div>
@@ -74,6 +99,24 @@ export default function Navbar() {
           >
             For Retailers
           </Link>
+          {/* Conditionally render either a button or a Link */}
+          {pathname === "/" ? (
+            <button className="nav-link" onClick={scrollToServices}>
+              Services
+            </button>
+          ) : (
+            <Link
+              href="/#services-section"
+              className="nav-link"
+              onClick={() => {
+                if (isOpen) {
+                  toggleMenu();
+                }
+              }}
+            >
+              Services
+            </Link>
+          )}
           <Link
             href="/about-kreeshee"
             className="nav-link"

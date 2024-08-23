@@ -1,3 +1,5 @@
+// lib/config/firebase.js
+
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
@@ -10,10 +12,14 @@ import {
   signInWithEmailAndPassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
-  // GoogleAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
 } from "firebase/auth";
 
 const firebaseConfig = {
+  // Your Firebase configuration keys
   apiKey: "AIzaSyD4xfwVOt7U-4rWlzkPLqEGvtxlFSLWwoM",
   authDomain: "project-kreeshee.firebaseapp.com",
   projectId: "project-kreeshee",
@@ -25,19 +31,20 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-// const app = initializeApp(firebaseConfig);
 
 // Initialize Analytics and other services conditionally
 let analytics;
 if (typeof window !== "undefined") {
   analytics = getAnalytics(app);
 }
-// const analytics = getAnalytics(app);
 
 const auth = getAuth(app);
-// const googleProvider = new GoogleAuthProvider();
+
+// Initialize Google Auth Provider
+const googleProvider = new GoogleAuthProvider();
 
 export {
+  app,
   analytics,
   auth,
   createUserWithEmailAndPassword,
@@ -48,4 +55,9 @@ export {
   signInWithEmailAndPassword,
   EmailAuthProvider,
   reauthenticateWithCredential,
+  GoogleAuthProvider,
+  googleProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
 };
