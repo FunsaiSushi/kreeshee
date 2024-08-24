@@ -1,9 +1,13 @@
 .services-container {
-  @apply relative w-full max-w-7xl flex flex-col justify-center items-center min-h-screen bg-quaternary rounded-xl p-4;
+  @apply relative w-full flex flex-col justify-center items-center min-h-screen bg-quaternary rounded-xl p-4;
 }
 
 .service-btn {
   @apply relative w-full aspect-square flex flex-col items-center justify-center text-white hover:text-lg font-medium cursor-pointer rounded-xl overflow-hidden transition-all duration-300;
+}
+
+.service-btn .icon {
+  font-size: 1.8rem;
 }
 
 .service-btn:hover .icon {

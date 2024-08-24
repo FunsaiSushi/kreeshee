@@ -84,7 +84,7 @@ const Home = () => {
       <div className="w-full p-4 space-y-6 flex flex-col justify-center items-center">
         <Supplies />
         <Demands />
-        <div>
+        <div className="w-full max-w-7xl">
           <Services />
         </div>
       </div>

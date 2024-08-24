@@ -9,6 +9,7 @@ import HireWorkers from "./HireWorkers";
 import Warehouse from "./Warehouse";
 import RentTruck from "./RentTruck";
 import Image from "next/image";
+import "./services.css";
 
 export default function Services() {
   const [activeService, setActiveService] = useState(null);
