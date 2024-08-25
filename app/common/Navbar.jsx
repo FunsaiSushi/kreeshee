@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { IoMail } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
@@ -12,9 +12,8 @@ import HamburgerMenu from "./HamburgerMenu";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { currentUser } = useAuthContext(); // Get the current user
-  const router = useRouter(); // Use the router hook to get the current route
-  const pathname = usePathname(); // Get the current pathname
+  const { currentUser } = useAuthContext();
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

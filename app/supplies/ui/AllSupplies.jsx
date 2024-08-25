@@ -80,8 +80,8 @@ const AllSupplies = () => {
   }, [loading, hasMore]);
 
   return (
-    <div className="container mx-auto max-w-6xl">
-      <h1 className="text-2xl font-bold mb-4">All Supplies</h1>
+    <div className="container mx-auto max-w-6xl px-4">
+      {/* <h1 className="text-2xl font-bold mb-4">All Supplies</h1> */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {supplies.map((supply) => (
           <SupplyPostCard key={supply._id} supply={supply} />

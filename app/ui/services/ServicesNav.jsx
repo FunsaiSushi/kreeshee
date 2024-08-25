@@ -35,13 +35,13 @@ export default function ServicesNav({ activeService, setActiveService }) {
         }`}
         onClick={() => setActiveService("rentTruck")}
       >
-        <FaTruck size={24} />
+        <FaTruck size={18} />
         <p
           className={`${
             activeService === "rentTruck" ? "" : "hidden"
           } sm:block`}
         >
-          Rent a Truck
+          Rent a truck
         </p>
       </div>
 
@@ -51,13 +51,13 @@ export default function ServicesNav({ activeService, setActiveService }) {
         }`}
         onClick={() => setActiveService("hireWorkers")}
       >
-        <GrUserWorker size={24} />
+        <GrUserWorker size={18} />
         <p
           className={`${
             activeService === "hireWorkers" ? "" : "hidden"
           } sm:block`}
         >
-          Hire Workers
+          Hire workers
         </p>
       </div>
 
@@ -67,13 +67,13 @@ export default function ServicesNav({ activeService, setActiveService }) {
         }`}
         onClick={() => setActiveService("expertHelp")}
       >
-        <GrUserExpert size={24} />
+        <GrUserExpert size={18} />
         <p
           className={`${
             activeService === "expertHelp" ? "" : "hidden"
           } sm:block`}
         >
-          Expert Help
+          Expert help
         </p>
       </div>
 
@@ -83,7 +83,7 @@ export default function ServicesNav({ activeService, setActiveService }) {
         }`}
         onClick={() => setActiveService("warehouse")}
       >
-        <FaWarehouse size={24} />
+        <FaWarehouse size={18} />
         <p
           className={`${
             activeService === "warehouse" ? "" : "hidden"

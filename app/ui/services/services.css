@@ -1,5 +1,5 @@
 .services-container {
-  @apply relative w-full flex flex-col justify-center items-center min-h-screen bg-quaternary rounded-xl p-4;
+  @apply relative w-full flex flex-col justify-center items-center bg-quaternary rounded-xl p-4;
 }
 
 .service-btn {

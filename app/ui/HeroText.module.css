@@ -1,0 +1,81 @@
+.animatedText {
+  font-weight: 600;
+  line-height: 1.1;
+  font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+}
+
+.animatedText span {
+  position: relative;
+}
+
+.animatedText span::before {
+  content: "REVOLUTIONIZING";
+  color: #d6efd8;
+  animation: words 20s infinite;
+}
+
+.animatedText span::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 100%;
+  background-color: #1a5319;
+  border-left: 2px solid #d6efd8;
+  right: -8px;
+  animation: cursor 0.8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+  to {
+    border-left: 2px solid #ff7f5000;
+  }
+}
+
+@keyframes words {
+  0%,
+  20% {
+    content: "REVOLUTIONIZING";
+  }
+  21%,
+  40% {
+    content: "MODERNIZING";
+  }
+  41%,
+  60% {
+    content: "TRANSFORMING";
+  }
+  61%,
+  80% {
+    content: "REDEFINING";
+  }
+  81%,
+  100% {
+    content: "INNOVATING";
+  }
+}
+
+@keyframes typing {
+  10%,
+  15%,
+  30%,
+  35%,
+  50%,
+  55%,
+  70%,
+  75%,
+  90%,
+  95% {
+    width: 0;
+  }
+  5%,
+  20%,
+  25%,
+  40%,
+  45%,
+  60%,
+  65%,
+  80%,
+  85% {
+    width: calc(100% + 8px);
+  }
+}
