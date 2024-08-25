@@ -46,7 +46,7 @@ export default function Navbar() {
     <nav
       className={`top-0 h-16 ${
         isOpen
-          ? "fixed min-h-screen flex-col justify-center backdrop-blur-xl bg-opacity-75 bg-primary"
+          ? "fixed container mx-auto min-h-screen flex-col justify-center backdrop-blur-xl bg-opacity-75 bg-primary"
           : "sticky justify-between"
       } z-40 flex w-full items-center p-4 bg-primary `}
       style={isOpen ? { top: 0 } : {}}

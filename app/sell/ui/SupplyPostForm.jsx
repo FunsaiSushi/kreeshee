@@ -18,14 +18,13 @@ export default function SupplyPostForm() {
     productName: "",
     quantity: "",
     quality: "",
-    buyingOptions: "Retail", // Default to Retail
+    buyingOptions: "", // Default to Retail
     retailPriceValue: "",
     retailPriceUnit: "",
-    wholesalePriceValue: "",
+    wholesalePriceValue: " ",
     wholesalePriceUnit: "",
     minBidPrice: "",
     bidUnit: "",
-    endTime: "",
     productImages: [],
     description: "",
   });
@@ -39,7 +38,7 @@ export default function SupplyPostForm() {
     if (currentUser) {
       setFormData((prevData) => ({
         ...prevData,
-        seller: currentUser.displayName || currentUser.email, // Fallback to email if no display name
+        seller: currentUser.displayName || currentUser.email,
       }));
     }
   }, [currentUser]);

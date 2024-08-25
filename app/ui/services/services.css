@@ -3,7 +3,7 @@
 }
 
 .service-btn {
-  @apply relative w-full aspect-square flex flex-col items-center justify-center text-white hover:text-lg font-medium cursor-pointer rounded-xl overflow-hidden transition-all duration-300;
+  @apply relative w-full aspect-square flex flex-col items-center justify-center text-white hover:text-lg font-medium cursor-pointer rounded-xl overflow-hidden transition-all duration-300 ease-in-out;
 }
 
 .service-btn .icon {
@@ -12,4 +12,5 @@
 
 .service-btn:hover .icon {
   transform: scale(1.33);
+  transition: transform 0.3s ease-in-out;
 }

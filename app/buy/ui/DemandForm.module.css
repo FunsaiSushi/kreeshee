@@ -1,0 +1,26 @@
+/* demand.module.css */
+
+.formGroup {
+  @apply relative mb-6;
+}
+
+.label {
+  @apply bg-quaternary absolute top-[-0.6rem] left-4 px-1 text-sm text-black;
+}
+
+.input {
+  @apply w-full bg-quaternary px-5 py-3 pt-3 pb-2 border-2 border-black rounded-full outline-none text-base text-black transition-colors duration-300;
+}
+
+.input:focus {
+  @apply border-primary;
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  color: #3182ce;
+}
+
+.notes {
+  @apply resize-none overflow-auto rounded-lg text-black h-32;
+}

@@ -13,3 +13,29 @@
 .sign-up-button {
   @apply flex justify-center items-center space-x-2 text-lg lg:text-xl text-primary font-semibold border-4 border-primary hover:bg-primary hover:text-quaternary rounded-full w-full lg:px-32 py-2 text-nowrap transition-colors duration-300;
 }
+
+.user-input input {
+  @apply w-full py-2 bg-transparent outline-none rounded-full text-base text-black px-5 transition ease-in-out duration-300;
+}
+
+.user-input label {
+  @apply absolute top-1/2 left-5 transform -translate-y-1/2 text-base pointer-events-none transition-all ease-in-out duration-300;
+}
+
+.user-input input.focused ~ label,
+.user-input input:valid ~ label,
+.user-input input ~ label.has-content {
+  @apply top-0 text-sm bg-quaternary px-2 font-normal;
+}
+
+.small-text {
+  font-weight: 600;
+  line-height: 1;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+}
+
+.big-text {
+  font-weight: 700;
+  line-height: 1;
+  font-size: clamp(3rem, 5vw, 5rem);
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MdSell } from "react-icons/md";
@@ -9,9 +10,30 @@ import Supplies from "./Supplies";
 import Demands from "./Demands";
 import { useAuthContext } from "../auth/contexts/AuthContext"; // Import AuthContext
 import Services from "./services/Services";
+import ServicesNav from "./services/ServicesNav";
+import ExpertHelp from "./services/ExpertHelp";
+import HireWorkers from "./services/HireWorkers";
+import Warehouse from "./services/Warehouse";
+import RentTruck from "./services/RentTruck";
 
 const Home = () => {
   const { currentUser } = useAuthContext(); // Get the current user from AuthContext
+  const [serviceSelected, setServiceSelected] = useState(null);
+
+  const renderServiceComponent = () => {
+    switch (serviceSelected) {
+      case "warehouse":
+        return <Warehouse />;
+      case "rentTruck":
+        return <RentTruck />;
+      case "hireWorkers":
+        return <HireWorkers />;
+      case "expertHelp":
+        return <ExpertHelp />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <main className="flex flex-col items-center min-h-screen">
@@ -21,17 +43,17 @@ const Home = () => {
       >
         FROM FARM TO HOME
       </div> */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full mb-4 bg-primary rounded-b-3xl">
+      <div className="flex flex-col md:flex-row items-start justify-between w-full mb-4 bg-primary rounded-b-3xl">
         <div className="flex flex-col justify-start md:w-1/2 p-4 text-quaternary">
-          <h1
-            className="lg:text-6xl font-bold mb-4 text-nowrap"
-            style={{ fontSize: "2rem" }}
-          >
-            Welcome to kreeshee.
+          <h1 className="small-text">REVOLUTIONIZING</h1>
+          <h1 className="big-text text-brightLime">AGRICULTURE</h1>
+          <h1 className="small-text flex text-brightLime">
+            <p className="small-text pr-2 text-quaternary">AND </p>LOGISTICS
           </h1>
-          <p className="text-xl lg:text-3xl font-semibold">
+          <h1 className="small-text">IN BANGLADESH</h1>
+          {/* <p className="text-xl lg:text-3xl font-semibold">
             Bangladesh's biggest online fresh produce market.
-          </p>
+          </p> */}
         </div>
         {/* images */}
         <div className="w-full md:w-1/2 flex justify-end relative rounded-3xl overflow-hidden">
@@ -84,8 +106,18 @@ const Home = () => {
       <div className="w-full p-4 space-y-6 flex flex-col justify-center items-center">
         <Supplies />
         <Demands />
-        <div className="w-full max-w-7xl">
-          <Services />
+        <div className="w-full max-w-7xl bg-quaternary min-h-screen rounded-2xl p-4">
+          {serviceSelected ? (
+            <>
+              <ServicesNav
+                activeService={serviceSelected}
+                setActiveService={setServiceSelected}
+              />
+              <div className="mt-4">{renderServiceComponent()}</div>
+            </>
+          ) : (
+            <Services setServiceSelected={setServiceSelected} />
+          )}
         </div>
       </div>
     </main>

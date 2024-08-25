@@ -23,7 +23,7 @@ function Demands() {
 
       <div className="flex"></div>
       <Link
-        href="/Demands"
+        href="/demands"
         className="flex sm:hidden bg-primary hover:bg-secondary text-quaternary justify-center border-2 rounded-full py-1 px-4 mt-4 font-semibold transition-colors duration-300"
       >
         Show more
