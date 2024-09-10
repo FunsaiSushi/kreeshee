@@ -27,6 +27,7 @@ const NameQuantity = ({ formData, handleChange }) => {
           type="text"
           id="quantity"
           name="quantity"
+          placeholder="10 ton"
           value={formData.quantity}
           onChange={handleChange}
           required

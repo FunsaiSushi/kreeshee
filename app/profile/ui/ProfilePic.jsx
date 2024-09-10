@@ -82,7 +82,7 @@ export default function ProfilePic({ userData }) {
   };
 
   return (
-    <div className="relative w-24 h-24">
+    <div className="relative w-24 h-24 border-2 border-secondary rounded-full">
       <Image
         src={preview}
         alt="Profile Image"

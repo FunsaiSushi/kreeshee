@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { IoMail } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
-import { useAuthContext } from "../auth/contexts/AuthContext"; // Import the context
+import { useAuthContext } from "../auth/contexts/AuthContext";
 import SearchBox from "./SearchBox";
 import HamburgerMenu from "./HamburgerMenu";
 
@@ -51,14 +51,9 @@ export default function Navbar() {
       style={isOpen ? { top: 0 } : {}}
     >
       {/* logo */}
-      <div>
-        <Link
-          href="/"
-          className={` ${
-            isOpen ? "hidden" : "text-2xl font-bold text-quaternary mr-2"
-          }`}
-        >
-          Kreeshee
+      <div className="pr-4">
+        <Link href="/" className={` ${isOpen ? "hidden" : ""}`}>
+          <img src="/Kreeshee-logo.svg" alt="Kreeshee logo" />
         </Link>
       </div>
 
@@ -76,7 +71,7 @@ export default function Navbar() {
               : "hidden"
           } xl:flex xl:space-x-2`}
         >
-          <Link
+          {/* <Link
             href="/farmers"
             className="nav-link"
             onClick={() => {
@@ -97,6 +92,17 @@ export default function Navbar() {
             }}
           >
             For Retailers
+          </Link> */}
+          <Link
+            href="/truck-rental"
+            className="nav-link"
+            onClick={() => {
+              if (isOpen) {
+                toggleMenu();
+              }
+            }}
+          >
+            Truck Rental
           </Link>
           {/* Conditionally render either a button or a Link */}
           {pathname === "/" ? (
@@ -105,7 +111,7 @@ export default function Navbar() {
             </button>
           ) : (
             <Link
-              href="/#services-section"
+              href="/services"
               className="nav-link"
               onClick={() => {
                 if (isOpen) {

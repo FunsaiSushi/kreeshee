@@ -1,4 +1,4 @@
-import SupplyPostForm from "../sell/ui/SupplyPostForm";
+import SupplyPostForm from "../supplies/ui/SupplyForm";
 import AllDemands from "./ui/AllDemands";
 
 export default function page() {

@@ -1,3 +1,5 @@
+"use client";
+
 import { FaTruck, FaWarehouse } from "react-icons/fa6";
 import { GrUserWorker, GrUserExpert } from "react-icons/gr";
 import Image from "next/image";

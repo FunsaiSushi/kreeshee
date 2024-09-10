@@ -3,7 +3,7 @@
 import { useState } from "react";
 import "../../auth/ui/auth-styles.css";
 
-export default function NameQuantityQuality({ formData, handleInputChange }) {
+export default function NameQuantity({ formData, handleInputChange }) {
   // State to track focus for each input
   const [focusedField, setFocusedField] = useState(null);
 

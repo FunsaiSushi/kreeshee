@@ -9,7 +9,7 @@
 }
 
 .input {
-  @apply w-full bg-quaternary px-5 py-3 pt-3 pb-2 border-2 border-black rounded-full outline-none text-base text-black transition-colors duration-300;
+  @apply w-full bg-quaternary px-5 py-3 pt-3 pb-2 border border-black rounded-xl outline-none text-base text-black transition-colors duration-300;
 }
 
 .input:focus {
@@ -18,7 +18,7 @@
 
 .input:focus + .label,
 .input:not(:placeholder-shown) + .label {
-  color: #3182ce;
+  @apply text-quaternary;
 }
 
 .notes {

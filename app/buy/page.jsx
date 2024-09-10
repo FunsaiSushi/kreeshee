@@ -1,7 +1,7 @@
 "use client";
 
 import AllSupplies from "../supplies/ui/AllSupplies";
-import DemandForm from "./ui/DemandForm";
+import DemandForm from "../demands/ui/DemandForm";
 
 export default function page() {
   return (

@@ -9,12 +9,12 @@ import { FaShoppingBag } from "react-icons/fa";
 import Supplies from "./Supplies";
 import Demands from "./Demands";
 import { useAuthContext } from "../auth/contexts/AuthContext";
-import Services from "./services/Services";
-import ServicesNav from "./services/ServicesNav";
-import ExpertHelp from "./services/ExpertHelp";
-import HireWorkers from "./services/HireWorkers";
-import Warehouse from "./services/Warehouse";
-import RentTruck from "./services/RentTruck";
+import Services from "./services-section/Services";
+import ServicesNav from "./services-section/ServicesNav";
+import ExpertHelp from "./services-section/ExpertHelp";
+import HireWorkers from "./services-section/HireWorkers";
+import Warehouse from "./services-section/Warehouse";
+import RentTruck from "./services-section/RentTruck";
 import styles from "./HeroText.module.css";
 
 const Home = () => {
@@ -56,8 +56,9 @@ const Home = () => {
             <Image
               src="/farmer4.avif"
               alt="Farmer 4"
-              fill
-              className="object-cover object-[25%]"
+              width={500}
+              height={500}
+              className="object-cover w-full h-full object-[25%]"
             />
           </div>
 
@@ -65,13 +66,20 @@ const Home = () => {
             <Image
               src="/truck.png"
               alt="Truck"
-              fill
-              className="object-cover object-[30%]"
+              width={500}
+              height={500}
+              className="object-cover w-full h-full object-[30%]"
             />
           </div>
 
           <div className="relative w-1/3 h-72">
-            <Image src="/store.jpg" alt="Store" fill className="object-cover" />
+            <Image
+              src="/store.jpg"
+              alt="Store"
+              width={500}
+              height={500}
+              className="object-cover w-full h-full"
+            />
           </div>
           <div className="absolute bottom-0 left-0 text-2xl text-quaternary z-10 bg-black bg-opacity-80 p-3 flex justify-center w-full">
             FROM FARM TO HOME.
@@ -81,7 +89,7 @@ const Home = () => {
 
       <div className="flex justify-center space-x-4 w-full max-w-5xl px-4 my-2">
         <Link
-          href={currentUser ? "/sell" : "/auth/signup"}
+          href={currentUser ? "/demands" : "/auth/signup"}
           className="sign-up-button"
         >
           <MdSell />
@@ -89,7 +97,7 @@ const Home = () => {
           <div className="hidden lg:block">Sell at kreeshee</div>
         </Link>
         <Link
-          href={currentUser ? "/buy" : "/auth/signup"}
+          href={currentUser ? "/supplies" : "/auth/signup"}
           className="sign-up-button"
         >
           <FaShoppingBag />

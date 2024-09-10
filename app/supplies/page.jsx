@@ -1,4 +1,4 @@
-import DemandForm from "../buy/ui/DemandForm";
+import DemandForm from "../demands/ui/DemandForm";
 import AllSupplies from "./ui/AllSupplies";
 
 export default function page() {
