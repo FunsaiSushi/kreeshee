@@ -38,7 +38,7 @@ async function getDemandById(id) {
   return data; // Return the `data` object
 }
 
-export default async function DemandDetails({ params }) {
+export default async function page({ params }) {
   const { id } = params;
   const demand = await getDemandById(id); // Now `demand` is the `data` object from the API
 
