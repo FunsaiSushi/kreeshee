@@ -95,6 +95,11 @@ const TruckRentList = () => {
             <p>
               <strong>To:</strong> {post.unloadDestination}
             </p>
+            <div className="flex justify-center">
+              <button className="px-4 py-2 bg-primary rounded-full text-quaternary font-bold mt-2">
+                Offer ride
+              </button>
+            </div>
           </div>
         ))}
       </div>
