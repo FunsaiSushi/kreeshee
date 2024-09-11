@@ -33,14 +33,14 @@ async function getDemandById(id) {
     },
   });
 
-  const { data } = await res.json(); // Destructure `data` from the response
+  const { data } = await res.json(); // Destructure data from the response
 
-  return data; // Return the `data` object
+  return data; // Return the data object
 }
 
 export default async function page({ params }) {
   const { id } = params;
-  const demand = await getDemandById(id); // Now `demand` is the `data` object from the API
+  const demand = await getDemandById(id); // Now demand is the data object from the API
 
   return (
     <div className="flex flex-col justify-center items-center w-full min-h-screen">
